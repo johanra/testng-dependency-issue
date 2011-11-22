@@ -4,16 +4,20 @@
 -->
 <project name="Unit Testing" default="test">
 		
-	<property name="report.dir" value="c:\temp\testng-bug\report" />
-	<property name="temp.dir" value="c:\temp\testng-bug" />
-	<property name="lib.dir" value="C:\java\code\testngworkspace\testngbug\libs" />
+	<property name="report.dir" value="../../report" />
+	<property name="temp.dir" value="../../temp" />
+	<property name="lib.dir" value="../../libs" />
 
 
 	<path id="testng.classpath">
 		<fileset dir="${lib.dir}">
-			<include name="**/*.jar" />
+			
+			<!--<include name="**/testng-5.11-jdk15.jar" />
+			<include name="**/testng-6.1.jar" />
+			<include name="**/testng-6.2.jar" />-->
+			<include name="**/testng-6.3.jar" />
 		</fileset>
-		<pathelement location="C:/java/code/testngworkspace/testngbug/bin/" />
+		<pathelement location="../../bin/" />
 	</path>
 		
 	<target name="init">
@@ -35,7 +39,7 @@
 	    <testng classpathref = "testng.classpath" 
 	    		haltonfailure = "true"
 	    		outputDir = "${report.dir}">
-	    	<xmlfileset dir="C:\java\code\testngworkspace\testngbug\src\com" includes="unittest-suite.xml"/>
+	    	<xmlfileset dir="../../src/com" includes="unittest-suite.xml"/>
 	    	<jvmarg value="-Xmx100M" />
 	 	</testng>
 	
