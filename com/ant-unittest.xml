@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	This ant script runs the unit tests for the L&C java tree. 
+-->
+<project name="Unit Testing" default="test">
+		
+	<property name="report.dir" value="c:\temp\testng-bug\report" />
+	<property name="temp.dir" value="c:\temp\testng-bug" />
+	<property name="lib.dir" value="C:\java\code\testngworkspace\testngbug\libs" />
+
+
+	<path id="testng.classpath">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+		<pathelement location="C:/java/code/testngworkspace/testngbug/bin/" />
+	</path>
+		
+	<target name="init">
+		
+		<!-- delete and create report directory -->
+		<delete dir="${report.dir}" />
+		<mkdir dir="${report.dir}" />	
+		
+		<delete dir="${temp.dir}" />
+		<mkdir dir="${temp.dir}" />
+	</target>
+	
+	
+	
+	<target name="test" depends="init">
+		<taskdef name="testng" classpathref="testng.classpath"
+		           classname="org.testng.TestNGAntTask" />
+
+	    <testng classpathref = "testng.classpath" 
+	    		haltonfailure = "true"
+	    		outputDir = "${report.dir}">
+	    	<xmlfileset dir="C:\java\code\testngworkspace\testngbug\src\com" includes="unittest-suite.xml"/>
+	    	<jvmarg value="-Xmx100M" />
+	 	</testng>
+	
+	</target>
+		
+	
+</project>
