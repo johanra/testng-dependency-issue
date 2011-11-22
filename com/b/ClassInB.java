@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class ClassInB {
 
-	@Test (dependsOnGroups = { "atests" },
+	@Test (
 			groups={"btests","alltests"})
 	public void testInB() {
 		Assert.assertTrue(true);

@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class ClassInA {
 
-	@Test (//dependsOnGroups = { "btests" },
+	@Test (dependsOnGroups = { "btests" },
 			groups={"atests","alltests"})
 	public void testInA() {
 		Assert.assertTrue(true);
